@@ -1,0 +1,191 @@
+body {
+  min-width: 1100px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.text {
+  font-size: 18px;
+  text-align: center;
+}
+
+.text--intro {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-weight: bold;
+  font-size: 26px;
+  background: linear-gradient(to right, red 0%, green 25%, goldenrod 50%, blue 75%, magenta 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: red;
+}
+
+.start-button {
+  display: block;
+  margin: 40px auto;
+  padding: 8px 40px;
+
+  font-size: 20px;
+  color: red;
+
+  background: none;
+  border: 2px solid red;
+  border-radius: 4px;
+  outline: none;
+
+  cursor: pointer;
+
+  transition-duration: 0.6s;
+}
+
+.start-button:focus,
+.start-button:active,
+.start-button:hover {
+  border-color: blue;
+  color: blue;
+}
+
+.game-area {
+  position: relative;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+
+  background-color: #f3f3f3;
+  border: 5px solid black;
+}
+
+.feed-collected-output {
+  min-width: 250px;
+  margin-left: 20px;
+  margin-top: 5px;
+
+  font-size: 24px;
+  color: tomato;
+}
+
+.cell {
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+}
+
+.cell--feed {
+  background-image: url("../img/feed.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 14px 14px;
+}
+
+.cell--feed.snake {
+  background-image: none;
+}
+
+.snake {
+  position: relative;
+}
+
+.snake::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("../img/snake-body.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 18px 18px;
+}
+
+.snake--vertical::before {
+  transform: rotate(45deg);
+}
+
+.snake--horizontal::before {
+  transform: rotate(-45deg);
+}
+
+.snake--u-head:not(.snake--bended)::before {
+  background-position: 4px 4px;
+}
+
+.snake--r-head:not(.snake--bended)::before {
+  background-position: -4px -4px;
+}
+
+.snake--d-head:not(.snake--bended)::before {
+  background-position: -4px -4px;
+}
+
+.snake--l-head:not(.snake--bended)::before {
+  background-position: 4px 4px;
+}
+
+.snake--bended::before {
+  background-image: url("../img/snake--bended.png");
+}
+
+.snake--utr-bend::before,
+.snake--ltd-bend::before {
+  transform: rotate(180deg);
+}
+
+.snake--utl-bend::before,
+.snake--rtd-bend::before {
+  transform: rotate(-90deg);
+}
+
+.snake--rtu-bend::before,
+.snake--dtl-bend::before {
+  transform: rotate(0deg);
+}
+
+.snake--dtr-bend::before,
+.snake--ltu-bend::before {
+  transform: rotate(90deg);
+}
+
+.window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  color: #ffffff;
+}
+
+.window--win {
+  font-size: 50px;
+
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.window--lose {
+  font-size: 40px;
+
+  background-color: #000000;
+}
+
+.window--show {
+  display: flex;
+  flex-direction: column;
+}
